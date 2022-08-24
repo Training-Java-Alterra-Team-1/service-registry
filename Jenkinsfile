@@ -43,8 +43,8 @@ pipeline {
 //             	]){
 					sh 'mvn jib:dockerBuild'
 //  					sh './publish.sh'
-                    			sh 'docker tag $LOCAL_IMAGE $REPO_IMAGE'
-                    			sh 'docker push $REPO_IMAGE'
+                    sh 'docker tag $LOCAL_IMAGE $REPO_IMAGE'
+                    sh 'docker push $REPO_IMAGE'
 					sh 'docker push ${REPO_IMAGE}'
 // 				}
             }
