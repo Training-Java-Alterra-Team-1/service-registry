@@ -14,7 +14,7 @@ pipeline {
     	    steps{
     	        sh 'java -version'
     	        sh 'mvn -v'
-    	        sh 'docker version'
+//     	        sh 'docker version'
     	    }
     	}
         stage('Build'){
@@ -42,23 +42,23 @@ pipeline {
             		usernamePassword(credentialsId:'docker', usernameVariable:'username', passwordVariable:'password')
             	]){
 					sh 'mvn jib:dockerBuild'
-					sh 'docker tag ${LOCAL_IMAGE} ${REPO_IMAGE}'
-					sh 'docker push ${REPO_IMAGE}'
+// 					sh 'docker tag ${LOCAL_IMAGE} ${REPO_IMAGE}'
+// 					sh 'docker push ${REPO_IMAGE}'
 				}
             }
         }
 
-        stage('Deploy'){
-            steps {
-                withCredentials([
-                    usernamePassword(credentialsId:'docker', usernameVariable:'username', passwordVariable:'password')
-                ]){
-                    sh 'scp deploy.sh ${REMOTE_USER}@${REMOTE_HOST:~/}'
-                    sh 'ssh ${REMOTE_USER}@${REMOTE_HOST} "chmod +x deploy.sh"'
-                    sh 'ssh ${REMOTE_USER}@${REMOTE_HOST} ./deploy.ssh'
-                }
-            }
-        }
+//         stage('Deploy'){
+//             steps {
+//                 withCredentials([
+//                     usernamePassword(credentialsId:'docker', usernameVariable:'username', passwordVariable:'password')
+//                 ]){
+//                     sh 'scp deploy.sh ${REMOTE_USER}@${REMOTE_HOST:~/}'
+//                     sh 'ssh ${REMOTE_USER}@${REMOTE_HOST} "chmod +x deploy.sh"'
+//                     sh 'ssh ${REMOTE_USER}@${REMOTE_HOST} ./deploy.ssh'
+//                 }
+//             }
+//         }
 
     }
 }
