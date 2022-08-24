@@ -42,8 +42,10 @@ pipeline {
 //             		usernamePassword(credentialsId:'docker', usernameVariable:'username', passwordVariable:'password')
 //             	]){
 					sh 'mvn jib:dockerBuild'
- 					sh './publish.sh'
-// 					sh 'docker push ${REPO_IMAGE}'
+//  					sh './publish.sh'
+                    			sh 'docker tag $LOCAL_IMAGE $REPO_IMAGE'
+                    			sh 'docker push $REPO_IMAGE'
+					sh 'docker push ${REPO_IMAGE}'
 // 				}
             }
         }
