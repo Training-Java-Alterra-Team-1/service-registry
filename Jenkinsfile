@@ -38,15 +38,15 @@ pipeline {
 		
 		stage('Publish Image'){
             steps {
-// 				withCredentials([
-//             		usernamePassword(credentialsId:'docker', usernameVariable:'username', passwordVariable:'password')
-//             	]){
+				withCredentials([
+            		usernamePassword(credentialsId:'docker', usernameVariable:'jalalazhmatkhan', passwordVariable:'yWFg*Fe9;zd56BV')
+            	]){
 					sh 'mvn jib:dockerBuild'
 //  					sh './publish.sh'
                     sh 'docker tag $LOCAL_IMAGE $REPO_IMAGE'
                     sh 'docker push $REPO_IMAGE'
 					sh 'docker push ${REPO_IMAGE}'
-// 				}
+				}
             }
         }
 
