@@ -19,32 +19,32 @@ pipeline {
     	}
         stage('Build'){
             steps {
-            	withCredentials([
-            		string(credentialsId:'jasypt_secret', variable:'secret')
-            	]){
-                	bat 'mvn clean compile install -Djasypt.encryptor.password=${secret}'
-            	}
+//             	withCredentials([
+//             		string(credentialsId:'jasypt_secret', variable:'secret')
+//             	]){
+                	bat 'mvn clean compile install'
+//             	}
             }
         }
         stage('Test'){
             steps {
-            	withCredentials([
-            		string(credentialsId:'jasypt_secret', variable:'secret')
-            	]){
-                	bat 'mvn test -Djasypt.encryptor.password=${secret}'
-            	}
+//             	withCredentials([
+//             		string(credentialsId:'jasypt_secret', variable:'secret')
+//             	]){
+                	bat 'mvn test'
+//             	}
             }
         }
 		
 		stage('Publish Image'){
             steps {
-				withCredentials([
-            		usernamePassword(credentialsId:'docker', usernameVariable:'username', passwordVariable:'password')
-            	]){
+// 				withCredentials([
+//             		usernamePassword(credentialsId:'docker', usernameVariable:'username', passwordVariable:'password')
+//             	]){
 					sh 'mvn jib:dockerBuild'
 // 					sh 'docker tag ${LOCAL_IMAGE} ${REPO_IMAGE}'
 // 					sh 'docker push ${REPO_IMAGE}'
-				}
+// 				}
             }
         }
 
