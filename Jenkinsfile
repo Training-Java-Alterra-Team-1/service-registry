@@ -8,7 +8,7 @@ pipeline {
 		REPO_IMAGE = 'jalalazhmatkhan/sistem-akademik:0.0.1'
 		REMOTE_USER = 'ec2-user'
 		REMOTE_HOST = 'ec2-13-127-197-5.ap-south-1.compute.amazonaws.com'
-		docker = credentialsId('dockerhub-jalalazhmatkhan')
+		docker = credentials('dockerhub-jalalazhmatkhan')
 	}
     stages{
     	stage('environment'){
