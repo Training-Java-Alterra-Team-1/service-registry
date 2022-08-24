@@ -22,7 +22,7 @@ pipeline {
 //             	withCredentials([
 //             		string(credentialsId:'jasypt_secret', variable:'secret')
 //             	]){
-                	bat 'mvn clean compile install'
+                	sh 'mvn clean compile install'
 //             	}
             }
         }
@@ -31,7 +31,7 @@ pipeline {
 //             	withCredentials([
 //             		string(credentialsId:'jasypt_secret', variable:'secret')
 //             	]){
-                	bat 'mvn test'
+                	sh 'mvn test'
 //             	}
             }
         }
