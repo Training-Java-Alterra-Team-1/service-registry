@@ -32,7 +32,7 @@ pipeline {
 		stage('Publish Image'){
             steps {
 				withCredentials([
-            		usernamePassword(credentialsId:'docker', usernameVariable:'jalalazhmatkhan', passwordVariable:'yWFg*Fe9;zd56BV')
+            		usernamePassword(credentialsId:'dockerhub-jalalazhmatkhan', usernameVariable:'jalalazhmatkhan', passwordVariable:'yWFg*Fe9;zd56BV')
             	]){
 					sh 'mvn jib:dockerBuild'
                     sh 'docker tag $LOCAL_IMAGE $REPO_IMAGE'
