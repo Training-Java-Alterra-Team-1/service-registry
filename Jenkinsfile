@@ -4,8 +4,8 @@ pipeline {
         maven 'maven_3.8.6'
     }
 	environment{
-		LOCAL_IMAGE = 'jalalazhmatkhan/sistem-akademik:0.0.1'
-		REPO_IMAGE = 'jalalazhmatkhan/sistem-akademik:0.0.1'
+		LOCAL_IMAGE = 'jalalazhmatkhan/service-registry:0.0.1'
+		REPO_IMAGE = 'jalalazhmatkhan/service-registry:0.0.1'
 		REMOTE_USER = 'ec2-user'
 		REMOTE_HOST = '172.31.34.22'
 	}
