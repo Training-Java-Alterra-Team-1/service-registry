@@ -7,7 +7,7 @@ pipeline {
 		LOCAL_IMAGE = 'jalalazhmatkhan/sistem-akademik:0.0.1'
 		REPO_IMAGE = 'jalalazhmatkhan/sistem-akademik:0.0.1'
 		REMOTE_USER = 'ec2-user'
-		REMOTE_HOST = 'ec2-13-127-197-5.ap-south-1.compute.amazonaws.com'
+		REMOTE_HOST = '172.31.34.22'
 	}
     stages{
     	stage('environment'){
