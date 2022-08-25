@@ -44,13 +44,9 @@ pipeline {
 
         stage('Deploy'){
             steps {
-//                 withCredentials([
-//                     usernamePassword(credentialsId:'docker', usernameVariable:'username', passwordVariable:'password')
-//                 ]){
-                    sh 'scp deploy.sh ${REMOTE_USER}@${REMOTE_HOST:~/}'
-                    sh 'ssh ${REMOTE_USER}@${REMOTE_HOST} "chmod +x deploy.sh"'
-                    sh 'ssh ${REMOTE_USER}@${REMOTE_HOST} ./deploy.ssh'
-//                 }
+                    sh 'ssh $REMOTE_USER@$REMOTE_HOST docker pull $REPO_IMAGE'
+                    sh 'ssh $REMOTE_USER@$REMOTE_HOST docker ps -q --filter ancestor=$REPO_IMAGE | xargs -r docker stop'
+                    sh 'ssh $REMOTE_USER@$REMOTE_HOST docker run -d -p 8085:8085 $REPO_IMAGE'
             }
         }
 
